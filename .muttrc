@@ -89,7 +89,6 @@ source ~/.mutt/sourced/macros			# Macros.
 #source ~/.mutt/themes/themes.256
 #set sendmail="/usr/bin/msmtp"
 set query_command="~/.mutt/ldap_query '%s'"
-#set query_command="bugz --columns 50 -b http://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=6387 -u lion.lian@oracle.com -p tycho123 get %s -A"
 alias SAURABH.G.GARG \"SAURABH.G.GARG@ORACLE.COM\" <SAURABH.G.GARG@oracle.com>
 alias gaojun.liu \"gaojun.liu\" <gaojun.liu@oracle.com>
 alias hongxi.ma Hongxi Ma <hongxi.ma@oracle.com>

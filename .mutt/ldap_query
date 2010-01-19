@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cname=$@
+#ldapsearch -x -b "dc=oracle,dc=com" "cn=$cname" -LLL mail | sed s"/^mail:\ //"g
+ldapsearch -h ldap.oracle.com -x -b "dc=oracle,dc=com" "cn=${cname}*" -LLL telephonenumber manager title  mail | cut -d, -f1 | sed -e s"/^dn\:\ cn\=/------------------------------------\n/"g -e s"/cn=//"ig -e s"/^dn\:\ //"g -e s"/^mail:\ //"g
+#EMAIL_INFO="`ldapsearch  -x -b "dc=oracle,dc=com" "cn=$cname" -LLL mail | awk '{print $2}' | awk -F, '{print $1}' | tr '\n' ' ' | cut -d= -f2`"
+#ALIAS_NAME="`echo $EMAIL_INFO | cut -d" " -f1 | sed s"/_/\ /"g`"
+#EMAIL_ADDR="`echo $EMAIL_INFO | cut -d" " -f2`"
+#echo "$ALIAS_NAME <$EMAIL_ADDR>

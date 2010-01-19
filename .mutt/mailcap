@@ -1,0 +1,449 @@
+# -------------------------------------- #
+# -- Documents  Handler ---------------- #
+# -------------------------------------- #
+
+# ------ Microsoft Documents ----------- #
+application/msword; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="Microsoft Word Document"; nametemplate=%s.doc; needsterminal
+application/msword;wvHtml --charset=gbk %s - | w3m -dump -I gbk -T text/html ; description="Microsoft Word Document"; copiousoutput
+application/vnd.ms-word.document.macroEnabled.12; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="Office Open XML Document with Macros Enabled"; nametemplate=%s.docm; needsterminal
+application/vnd.ms-word.document.macroEnabled.12; wvHtml --charset=gbk %s - | w3m -dump -I gbk -T text/html ; description="Microsoft Word Document"; copiousoutput
+application/vnd.ms-word.template.macroEnabled.12; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="Office Open XML Document Template with Macros Enabled"; nametemplate=%s.dotm; needsterminal
+application/octet-stream;soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="Microsoft Word Document"; nametemplate=%s.doc; test=test -n "$DISPLAY"; needsterminal
+application/octet-stream;wvHtml --charset=gbk %s - | w3m -dump -I gbk -T text/html ; description="Microsoft Word Document"; copiousoutput
+application/msexcel; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Microsoft Excel Document"; nametemplate=%s.xls; needsterminal
+application/msexcel; xlhtml '%s' | w3m -dump -T text/html ; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Microsoft Excel Document"; nametemplate=%s.xls; copiousoutput
+application/vnd.ms-excel; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Microsoft Excel Document"; nametemplate=%s.xls; needsterminal
+application/vnd.ms-excel; xlhtml '%s' | w3m -dump -T text/html ; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Microsoft Excel Document"; nametemplate=%s.xls; copiousoutput
+application/vnd.ms-excel.sheet.macroEnabled.12; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet with Macros Enabled"; nametemplate=./%s.xlsm; needsterminal
+application/vnd.ms-excel.sheet.macroEnabled.12; xlhtml '%s' | w3m -dump -T text/html; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet with Macros Enabled"; nametemplate=%s.xlsm; copiousoutput
+application/vnd.ms-excel.template.macroEnabled.12; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template with Macros Enabled"; nametemplate=%s.xltm; needsterminal
+application/vnd.ms-excel.template.macroEnabled.12; xlhtml '%s' | w3m -dump -T text/html; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template with Macros Enabled"; nametemplate=%s.xltm; needsterminal
+application/mspowerpoint; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="Microsoft PowerPoint Document"; nametemplate=%s.ppt; needsterminal
+#application/mspowerpoint; ppthtml '%s' | w3m -dump -I gbk -T text/html; test=test -n "$DISPLAY"; description="Microsoft PowerPoint Document"; nametemplate=%s.ppt; needsterminal
+application/vnd.ms-powerpoint; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="Microsoft PowerPoint Document"; nametemplate=%s.ppt; needsterminal
+#application/vnd.ms-powerpoint; ppthtml '%s' | w3m -dump -I gbk -T text/html; test=test -n "$DISPLAY"; description="Microsoft PowerPoint Document"; nametemplate=%s.ppt; needsterminal
+application/ppt; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="Microsoft PowerPoint Document"; nametemplate=%s.ppt; needsterminal
+#application/ppt; ppthtml '%s' | w3m -dump -I gbk -T text/html; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="Microsoft PowerPoint Document"; nametemplate=%s.ppt; needsterminal
+application/vnd.ms-works; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="Microsoft Works Document"; nametemplate=%s.wps; needsterminal
+application/vnd.ms-powerpoint.presentation.macroEnabled.12; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation with Macros Enabled"; nametemplate=%s.pptm; needsterminal
+application/vnd.ms-powerpoint.slideshow.macroEnabled.12; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation Slide Show with Macros Enabled"; nametemplate=%s.ppsm; needsterminal
+application/vnd.ms-powerpoint.template.macroEnabled.12; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation Template with Macros Enabled"; nametemplate=%s.potm; needsterminal
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet"; nametemplate=%s.xlsx; needsterminal
+application/vnd.openxmlformats-officedocument.spreadsheetml.template; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template"; nametemplate=%s.xltx; needsterminal
+application/vnd.openxmlformats-officedocument.presentationml.presentation; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation"; nametemplate=%s.pptx; needsterminal
+application/vnd.openxmlformats-officedocument.presentationml.slideshow; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation Slide Show"; nametemplate=%s.ppsx; needsterminal
+application/vnd.openxmlformats-officedocument.presentationml.template; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="Office Open XML Presentation Template"; nametemplate=%s.potx; needsterminal
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="Office Open XML Document"; nametemplate=%s.docx; needsterminal
+application/vnd.openxmlformats-officedocument.wordprocessingml.template; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="Office Open XML Document Template"; nametemplate=%s.dotx; needsterminal
+
+# ------ OpenDocuments ----------------- #
+application/vnd.oasis.opendocument.text; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="OpenDocument Text Document"; nametemplate=%s.odt; needsterminal
+application/vnd.oasis.opendocument.chart; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="OpenDocument Chart"; nametemplate=%s.odc; needsterminal
+application/vnd.oasis.opendocument.spreadsheet; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="OpenDocument Spreadsheet"; nametemplate=%s.ods; needsterminal
+application/vnd.oasis.opendocument.spreadsheet-template; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="OpenDocument Spreadsheet Template"; nametemplate=%s.ots; needsterminal
+application/vnd.oasis.opendocument.graphics; soffice -draw '%s'; edit=soffice -draw '%s'; test=test -n "$DISPLAY"; description="OpenDocument Drawing"; nametemplate=%s.odg; needsterminal
+application/vnd.oasis.opendocument.graphics-template; soffice -draw '%s'; edit=soffice -draw '%s'; test=test -n "$DISPLAY"; description="OpenDocument Drawing Template"; nametemplate=%s.otg; needsterminal
+application/vnd.oasis.opendocument.presentation; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="OpenDocument Presentation"; nametemplate=%s.odp; needsterminal
+application/vnd.oasis.opendocument.presentation-template; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="OpenDocument Presentation Template"; nametemplate=%s.otp; needsterminal
+application/vnd.oasis.opendocument.text-master; soffice -global '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="OpenDocument Master Document"; nametemplate=%s.odm; needsterminal
+application/vnd.oasis.opendocument.text-template; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="OpenDocument Text Document Template"; nametemplate=%s.ott; needsterminal
+application/vnd.oasis.opendocument.text-web; soffice -web '%s'; edit=soffice -web '%s'; test=test -n "$DISPLAY"; description="OpenDocument HTML Document Template"; nametemplate=%s.oth; needsterminal
+application/vnd.sun.xml.calc; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Spreadsheet"; nametemplate=%s.sxc; needsterminal
+application/vnd.sun.xml.calc.template; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Spreadsheet Template"; nametemplate=%s.stc; needsterminal
+application/vnd.sun.xml.draw; soffice -draw '%s'; edit=soffice -draw '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Drawing"; nametemplate=%s.sxd; needsterminal
+application/vnd.sun.xml.draw.template; soffice -draw '%s'; edit=soffice -draw '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Drawing Template"; nametemplate=%s.std; needsterminal
+application/vnd.sun.xml.impress; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Presentation"; nametemplate=%s.sxi; needsterminal
+application/vnd.sun.xml.impress.template; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="OpenOffice.org Presentation Template"; nametemplate=%s.sti; needsterminal
+application/vnd.sun.xml.writer; soffice -writer '%s'; edit=soffice -writer '%s'; description="OpenOffice.org Text Document"; nametemplate=%s.sxw; needsterminal
+application/vnd.sun.xml.writer.global; soffice -global '%s'; edit=soffice -writer '%s'; description="OpenOffice.org Master Document"; nametemplate=%s.sxg; needsterminal
+application/vnd.sun.xml.writer.template; soffice -writer '%s'; edit=soffice -writer '%s'; description="OpenOffice.org Text Document Template"; nametemplate=%s.stw; needsterminal
+application/vnd.stardivision.calc; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="StarCalc 5.0"; nametemplate=%s.sdc; needsterminal
+application/vnd.stardivision.chart; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="StarChart 5.0"; nametemplate=%s.sds; needsterminal
+application/vnd.stardivision.draw; soffice -draw '%s'; edit=soffice -draw '%s'; test=test -n "$DISPLAY"; description="StarDraw 5.0"; nametemplate=%s.sda; needsterminal
+application/vnd.stardivision.impress; soffice -impress '%s'; edit=soffice -impress '%s'; test=test -n "$DISPLAY"; description="StarImpress 5.0"; nametemplate=%s.sdd; needsterminal
+application/vnd.stardivision.math; soffice -math '%s'; edit=soffice -math '%s'; test=test -n "$DISPLAY"; description="StarMath 5.0"; nametemplate=%s.sdf; needsterminal
+application/vnd.stardivision.writer-global; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="StarWriter 5.0 Master Document"; nametemplate=%s.sgl; needsterminal
+application/vnd.stardivision.writer; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="StarWriter 5.0"; nametemplate=%s.sdw; needsterminal
+application/x-quattropro; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Quattro Pro 6 for Windows Spreadsheet"; nametemplate=%s.wb2; needsterminal
+application/x-dbf; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="xBase Document"; nametemplate=%s.dbf; needsterminal
+application/vnd.lotus-1-2-3; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Lotus 1-2-3 spreadsheet"; nametemplate=%s.123; needsterminal
+application/x-dbase; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="xBase Document"; nametemplate=%s.dbf; needsterminal
+application/rtf; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="Rich Text Format"; nametemplate=%s.rtf; needsterminal
+application/x-extension-txt; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="Plain Text Document"; nametemplate=%s.txt; needsterminal
+application/x-t602; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="T602 Document"; nametemplate=%s.602; needsterminal
+application/vnd.wordperfect; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="WordPerfect Document"; nametemplate=%s.wp; needsterminal
+application/wordperfect; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="WordPerfect Document"; nametemplate=%s.wp; needsterminal
+
+text/rtf; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="Rich Text Format"; nametemplate=%s.rtf; needsterminal
+text/csv; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="CSV Document"; nametemplate=%s.csv; needsterminal
+text/x-csv; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="CSV Document"; nametemplate=%s.csv; needsterminal
+text/spreadsheet; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="Spreadsheet Interchange Document"; nametemplate=%s.slk; needsterminal
+
+# ------ HTML Documents ---------------- #
+text/html; w3m -T text/html -I `echo %{charset} | tr '[A-Z]' '[a-z]' | sed s/gb2312/gbk/g` -dump %s; nametemplate=%s.html; description="HTML Text"; copiousoutput
+text/html; lynx -force_html -assume_charset=gbk -assume_local_charset=gbk -assume_unrec_charset=gbk -display_charset=utf8 -dump -force_html '%s'; description="HTML Text"; nametemplate=%s.html; copiousoutput
+text/html; html2text '%s'; description="HTML Text"; copiousoutput
+text/html; elinks -dump -default-mime-type text/html %s; needsterminal; copiousoutput
+text/html; links -dump '%s'; copiousoutput; description="HTML Text"; nametemplate=%s.html; copiousoutput
+text/html; sensible-browser '%s'; description="HTML Text"; nametemplate=%s.html; copiousoutput
+text/html; firefox '%s'; description="HTML Text"; test=test -n "$DISPLAY";  nametemplate=%s.html; needsterminal
+text/html; seamonkey '%s'; description="HTML Text"; test=test -n "$DISPLAY";  nametemplate=%s.html; needsterminal
+text/html; swiftfox '%s'; description="HTML Text"; test=test -n "$DISPLAY";  nametemplate=%s.html; needsterminal
+
+# ------ PDF Documents ----------------- #
+application/pdf;acroread -tempFile %s; test=test -n "$DISPLAY"; nametemplate=%s.pdf; needsterminal
+#application/pdf; pdftohtml -q -stdout %s | w3m -T text/html -I `echo %{charset} | tr '[A-Z]' '[a-z]' | sed s/gb2312/gbk/g` -dump -T text/html %s ; nametemplate=%s.pdf; copiousoutput
+application/pdf; gv '%s'; test=test -n "$DISPLAY"; needsterminal
+application/pdf; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.pd; needsterminal
+application/x-pdf; acroread -tempFile '%s'; test=test -n "$DISPLAY"; nametemplate=%s.pdf; needsterminal
+application/x-pdf; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.pdf; needsterminal
+application/x-bzpdf; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.pdf.gz; needsterminal
+application/x-gzpdf; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.pdf.bz2; needsterminal
+
+# ------ Text Documents ---------------- #
+text/plain; less -isr '%s'; copiousoutput
+text/plain; most '%s'; copiousoutput
+text/plain; more '%s'; copiousoutput
+text/plain; view '%s'; edit=vim '%s'; compose=vim '%s'; needsterminal
+text/plain; gview -f '%s'; edit=gvim -f '%s'; compose=gvim -f '%s'; test=test "$DISPLAY" != ""
+text/plain; soffice -writer '%s'; edit=soffice -writer '%s'; test=test -n "$DISPLAY"; description="Plain Text Document"; nametemplate=%s.txt
+text/plain; shownonascii iso-8859-1 '%s'; description="Plain ASCII Text"; test=test "$(echo %{charset} | tr "[A-Z]" "[a-z]")" = iso-8859-1 -a "$DISPLAY" != ""
+text/*; less '%s'; copiousoutput
+text/*; more '%s'; copiousoutput
+text/*; most '%s'; copiousoutput
+text/*; view '%s'; edit=vim '%s'; compose=vim '%s'; needsterminal
+text/*; gview -f '%s'; edit=gvim -f '%s'; compose=gvim -f '%s'; test=test "$DISPLAY" != ""; needsterminal
+
+# -------------------------------------- #
+# -- Key files ------------------------- #
+application/x-pkcs7-signature;openssl pkcs7 -in %s -inform der -noout -print_certs -text | less -isr; copiousoutput
+
+# -------------------------------------- #
+# -- Image files ----------------------- #
+# -------------------------------------- #
+image/jpg; display -size 640x480 'jpg:%s'; test=test -n "$DISPLAY"; needsterminal
+image/jpg; xli -quiet '%s'; test=test -n "$DISPLAY"; description="JPEG Image"; nametemplate=%s.jpg; needsterminal
+image/jpg; seamonkey '%s'; description="JPEG Image"; test=test -n "$DISPLAY";  nametemplate=%s.jpg; needsterminal
+image/jpg; swiftfox '%s'; description="JPEG Image"; test=test -n "$DISPLAY";  nametemplate=%s.jpg; needsterminal
+image/jpeg; display -size 640x480 'jpeg:%s'; test=test -n "$DISPLAY" 
+image/jpeg; xli -quiet '%s'; test=test -n "$DISPLAY"; description="JPEG Image"; nametemplate=%s.jpg; needsterminal
+image/jpeg; xloadimage '%s' ; test=test -n "$DISPLAY"; needsterminal
+image/jpeg; seamonkey '%s'; description="JPEG Image"; test=test -n "$DISPLAY";  nametemplate=%s.jpeg; needsterminal
+image/jpeg; swiftfox '%s'; description="JPEG Image"; test=test -n "$DISPLAY";  nametemplate=%s.jpeg; needsterminal
+image/pjpeg; display 'jpeg:%s'; test=test -n "$DISPLAY"; needsterminal
+image/png; display 'png:%s'; test=test -n "$DISPLAY"; needsterminal
+image/png; xli -quiet '%s'; test=test -n "$DISPLAY"; description="PNG Image"; nametemplate=%s.png; needsterminal
+image/png; xloadimage '%s' ; test=test -n "$DISPLAY"; needsterminal
+image/png; seamonkey '%s'; description="PNG Image"; test=test -n "$DISPLAY";  nametemplate=%s.png; needsterminal
+image/png; swiftfox '%s'; description="PNG Image"; test=test -n "$DISPLAY";  nametemplate=%s.png; needsterminal
+image/gif; display 'gif:%s'; test=test -n "$DISPLAY"; needsterminal
+image/gif; xli -quiet '%s'; test=test -n "$DISPLAY"; description=GIF Image; nametemplate=%s.gif; needsterminal
+image/gif; xloadimage '%s' ; test=test -n "$DISPLAY"; needsterminal
+image/gif; seamonkey '%s'; description="GIF Image"; test=test -n "$DISPLAY";  nametemplate=%s.gif; needsterminal
+image/gif; swiftfox '%s'; description="GIF Image"; test=test -n "$DISPLAY";  nametemplate=%s.gif; needsterminal
+image/tiff; display 'tiff:%s'; test=test -n "$DISPLAY"; needsterminal
+image/tiff; xloadimage '%s' ; test=test -n "$DISPLAY"; needsterminal
+image/tiff; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.tiff; needsterminal
+image/x-ms-bmp; /usr/bin/xli -quiet '%s'; test=test -n "$DISPLAY"; description=BMP Image; nametemplate=%s.bmp
+image/x-cmu-raster; /usr/bin/xli -quiet '%s'; test=test -n "$DISPLAY"; description=CMU-RasterFile Image; nametemplate=%s.ras
+image/g3fax; /usr/bin/xli -quiet '%s'; test=test -n "$DISPLAY"; description=G3-FAX Image; nametemplate=%s.g3
+image/targa; /usr/bin/xli -quiet '%s'; test=test -n "$DISPLAY"; description=TARGA Image; nametemplate=%s.tga
+image/x-portable-bitmap; /usr/bin/xli -quiet '%s'; test=test -n "$DISPLAY"; description=PBM Image; nametemplate=%s.pbm
+image/x-portable-graymap; /usr/bin/xli -quiet '%s'; test=test -n "$DISPLAY"; description=PGM Image; nametemplate=%s.pgm
+image/x-portable-pixmap; /usr/bin/xli -quiet '%s'; test=test -n "$DISPLAY"; description=PPM Image; nametemplate=%s.ppm
+image/x-rgb; /usr/bin/xli -quiet '%s'; test=test -n "$DISPLAY"; description=RGB Image; nametemplate=%s.rgb
+image/x-xbitmap; /usr/bin/xli -quiet '%s'; test=test -n "$DISPLAY"; description=XBM Image; nametemplate=%s.xbm
+image/x-xpixmap; /usr/bin/xli -quiet '%s'; test=test -n "$DISPLAY"; description=XPM Image; nametemplate=%s.xpm
+image/avs; display 'avs:%s'; test=test -n "$DISPLAY"
+image/bie; display 'jbig:%s'; test=test -n "$DISPLAY"
+image/x-ms-bmp; display 'bmp:%s'; test=test -n "$DISPLAY"
+image/bmp; display 'bmp:%s'; test=test -n "$DISPLAY"
+image/cmyk; display 'cmyk:%s'; test=test -n "$DISPLAY"
+image/dcx; display 'dcx:%s'; test=test -n "$DISPLAY"
+image/eps; display 'eps:%s'; test=test -n "$DISPLAY"
+image/fax; display 'fax:%s'; test=test -n "$DISPLAY"
+image/fits; display 'fits:%s'; test=test -n "$DISPLAY"
+image/gray; display 'gray:%s'; test=test -n "$DISPLAY"
+image/miff; display 'miff:%s'; test=test -n "$DISPLAY"
+image/mono; display 'mono:%s'; test=test -n "$DISPLAY"
+image/mtv; display 'mtv:%s'; test=test -n "$DISPLAY"
+image/x-portable-bitmap; display 'pbm:%s'; test=test -n "$DISPLAY"
+image/pcd; display 'pcd:%s'; test=test -n "$DISPLAY"
+image/pcx; display 'pcx:%s'; test=test -n "$DISPLAY"
+image/pdf; display 'pdf:%s'; test=test -n "$DISPLAY"
+image/x-portable-graymap; display 'pgm:%s'; test=test -n "$DISPLAY"
+image/pict; display 'pict:%s'; test=test -n "$DISPLAY"
+image/x-portable-anymap; display 'pnm:%s'; test=test -n "$DISPLAY"
+image/x-portable-pixmap; display 'ppm:%s'; test=test -n "$DISPLAY"
+image/ps; display 'ps:%s'; test=test -n "$DISPLAY"
+image/rad; display 'rad:%s'; test=test -n "$DISPLAY"
+image/x-rgb; display 'rgb:%s'; test=test -n "$DISPLAY"
+image/rgba; display 'rgba:%s'; test=test -n "$DISPLAY"
+image/rla; display 'rla:%s'; test=test -n "$DISPLAY"
+image/rle; display 'rle:%s'; test=test -n "$DISPLAY"
+image/sgi; display 'sgi:%s'; test=test -n "$DISPLAY"
+image/sun-raster; display 'sun:%s'; test=test -n "$DISPLAY"
+image/targa; display 'tga:%s'; test=test -n "$DISPLAY"
+image/uyvy; display 'uyvy:%s'; test=test -n "$DISPLAY"
+image/vid; display 'vid:%s'; test=test -n "$DISPLAY"
+image/viff; display 'viff:%s'; test=test -n "$DISPLAY"
+image/x-xbitmap; display 'xbm:%s'; test=test -n "$DISPLAY"
+image/x-xpixmap; display 'xpm:%s'; test=test -n "$DISPLAY"
+image/x-xwindowdump; display 'xwd:%s'; test=test -n "$DISPLAY"
+image/x-icon; display 'icon:%s'; test=test -n "$DISPLAY"
+image/yuv; display 'yuv:%s'; test=test -n "$DISPLAY"
+
+image/x-cmu-raster; xloadimage '%s' ; test=test -n "$DISPLAY"
+image/x-portable-anymap; xloadimage '%s' ; test=test -n "$DISPLAY"
+image/x-portable-bitmap; xloadimage '%s' ; test=test -n "$DISPLAY"
+image/x-portable-graymap; xloadimage '%s' ; test=test -n "$DISPLAY"
+image/x-portable-pixmap; xloadimage '%s' ; test=test -n "$DISPLAY"
+image/x-xbitmap ; xloadimage '%s' ; test=test -n "$DISPLAY"
+image/x-xpixmap ; xloadimage '%s' ; test=test -n "$DISPLAY"
+image/x-xwindowdump ; xloadimage '%s' ; test=test -n "$DISPLAY"
+image/*; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.dummy
+# -------------------------------------- #
+# -- Video/Audio  Handler -------------- #
+# -------------------------------------- #
+audio/8k8bitlinear;aplay %s &; description="8bit audio"; needsterminal
+audio/mp3;mpg123 -q '%s'; description="MP3 audio"; nametemplate=%s.mp3; needsterminal
+audio/mp3;mplayer '%s'; description="MP3 audio"; nametemplate=%s.mp3; needsterminal
+audio/x-mp3; gmplayer '%s'; description="MP3 audio"; test=test -n "$DISPLAY"; nametemplate=%s.mp3; needsterminal
+audio/x-mp3; rhythmbox '%s'; description="MP3 audio"; test=test -n "$DISPLAY"; nametemplate=%s.mp3; needsterminal
+audio/x-mp3; vlc -I rc -V caca '%s'; nametemplate=%s.mp3; needsterminal; description="MPEG Audio"; test=test -n "$DISPLAY"; needsterminal
+audio/mpg; mpg123 -q '%s'; description="MPEG audio"; nametemplate=%s.mp3; needsterminal
+audio/mpg; mplayer '%s'; description="MPEG audio"; nametemplate=%s.mp3; needsterminal
+audio/mpg; rhythmbox '%s'; description="MPEG audio"; test=test -n "$DISPLAY"; needsterminal
+audio/mpg; vlc -I rc -V caca '%s'; nametemplate=%s.mpg; description="MPEG Audio"; test=test -n "$DISPLAY"; needsterminal
+audio/mpg; alsaplayer -i gtk '%s'; description="MPEG Audio"; test=test -n "$DISPLAY"; nametemplate=%s.mp3; needsterminal
+audio/mpegurl; mplayer '%s'; description="MPG Playlist"; test=test -n "$DISPLAY"; needsterminal
+audio/mpegurl; vlc -I rc -V caca '%s'; description="MPEG Audio URL"; nametemplate=%s.m3u; test=test -n "$DISPLAY"; needsterminal
+audio/mpegurl; alsaplayer -i gtk '%s'; test=test -n "$DISPLAY"; nametemplate=%s.m3u; needsterminal
+audio/x-mpegurl; mplayer '%s'; description="Icecast Playlist"; needsterminal
+audio/x-mpegurl; mplayer '%s'; description="MPG Playlist"; test=test -n "$DISPLAY"; needsterminal
+audio/x-mpegurl; rhythmbox '%s'; description="MPG Playlist"; test=test -n "$DISPLAY"; nametemplate=%s.m3u; needsterminal
+audio/x-mpg; rhythmbox '%s'; description="MP3 audio"; test=test -n "$DISPLAY"; needsterminal
+audio/mpeg; mpg123 -q '%s'; description="MPEG audio"; nametemplate=%s.mp3; needsterminal
+audio/mpeg; mplayer '%s'; description="MPEG audio"; nametemplate=%s.mp3; needsterminal
+audio/mpeg; rhythmbox '%s'; description="MPEG audio"; test=test -n "$DISPLAY"; needsterminal
+audio/mpeg; vlc -I rc -V caca '%s'; nametemplate=%s.mpg; description="MPEG Audio"; test=test -n "$DISPLAY"; needsterminal
+audio/mpeg; alsaplayer -i gtk '%s'; description="MPEG Audio"; test=test -n "$DISPLAY"; nametemplate=%s.mp3; needsterminal
+audio/x-mpeg; rhythmbox '%s'; description="MP3 audio"; test=test -n "$DISPLAY"; needsterminal
+audio/wav; mplayer '%s'; nametemplate=%s.wav; description="WAV Audio"; needsterminal
+audio/x-wav; mplayer '%s'; description="WAV Audio"; nametemplate=%s.wav; needsterminal
+audio/x-wav; play '%s' -t wav; description="WAV Audio"; nametemplate=%s.wav; needsterminal
+audio/x-wav; esdplay '%s'; nametemplate=%s.wav; description="WAV Audio"; needsterminal
+audio/x-wav; gmplayer '%s'; nametemplate=%s.wav; description="WAV Audio";  test=test -n "$DISPLAY"; needsterminal
+audio/x-wav; vlc -I rc -V caca '%s'; nametemplate=%s.wav; needsterminal; description="WAV Audio"
+audio/x-wav; alsaplayer -i gtk '%s'; test=test -n "$DISPLAY"; nametemplate=%s.wav; needsterminal
+audio/x-pn-wav; gmplayer '%s'; nametemplate=%s.wav; description="WAV Audio";  test=test -n "$DISPLAY"; needsterminal
+audio/x-pn-windows-acm; mplayer %s
+audio/x-pn-windows-pcm; mplayer %s
+audio/x-realaudio-secure; realplay %s
+audio/vnd.rn-realaudio; realplay %s
+audio/x-realaudio; realplay %s
+audio/x-pn-realaudio; realplay %s
+audio/aac; mplayer %s
+audio/m4a; mplayer %s
+audio/mp2; mplayer %s
+audio/mp1; mplayer %s
+audio/rn-mpeg;realplay %s
+audio/scpls;realplay %s
+audio/x-scpls;realplay %s
+audio/basic;realplay %s
+audio/x-pn-au;realplay %s
+audio/aiff;realplay %s
+audio/x-aiff;realplay %s
+audio/x-pn-aiff;realplay %s
+audio/x-ms-wax; mplayer '%s'; description="Windows Media Audio"
+audio/x-ms-wma; mplayer '%s'; description="Windows Media Audio"
+audio/x-pls; mplayer '%s'; description="MP3 ShoutCast/IceCast Playlist"
+audio/x-scpls; mplayer '%s'; description="Shoutcast Playlist"
+audio/midi; pmidi '%s'; test=test -n "$ALSA_OUTPUT_PORTS"
+audio/x-scpls; rhythmbox '%s'; description="MP3 ShoutCast playlist"; test=test -n "$DISPLAY"; nametemplate=%s.pls
+audio/basic; /usr/bin/play '%s' -t au 
+audio/x-aiff; /usr/bin/play '%s' -t aiff
+audio/x-gsm; /usr/bin/play '%s' -t gsm
+audio/midi; /usr/bin/timidity -id '%s'; description=A MIDI file; nametemplate=%s.mid
+audio/x-midi; /usr/bin/timidity -id '%s'; description=A MIDI file; nametemplate=%s.mid
+audio/mpeg4; vlc -I rc -V caca '%s'; needsterminal; description="MPEG-4 Audio"
+audio/basic; /usr/lib/mime/playaudio '%s'; description=Basic uLaw Audio; nametemplate=%s.au
+audio/x-scpls; alsaplayer -i gtk '%s'; test=test "$DISPLAY" != ""; nametemplate=%s.pls
+audio/x-flac; alsaplayer -i gtk '%s'; test=test "$DISPLAY" != ""; nametemplate=%s.flac
+audio/midi; /usr/bin/timidity -ia '%s'; test=test -n "$DISPLAY"; description=A MIDI file; nametemplate=%s.mid
+audio/x-midi; /usr/bin/timidity -ia '%s'; test=test -n "$DISPLAY"; description=A MIDI file; nametemplate=%s.mid
+audio/mpeg4; vlc '%s'; description="MPEG-4 Audio"; test=test -n "$DISPLAY"
+audio/basic; /usr/bin/esdplay '%s'
+audio/x-aiff; /usr/bin/esdplay '%s'
+
+application/x-ogg;mplayer %s; needsterminal
+application/ogg;mplayer %s
+text/vnd.rn-realtext;realplay %s
+image/vnd.rn-realpix;realplay %s
+application/smil;realplay %s
+application/vnd.rn-realmedia-secure;realplay %s
+application/vnd.rn-realaudio-secure;realplay %s
+video/vnd.rn-realvideo-secure;realplay %s
+application/vnd.rn-realmedia;realplay %s
+application/vnd.rn-realmedia-vbr;realplay %s
+image/vnd.rn-realpix;realplay %s
+video/vnd.rn-realvideo;realplay %s
+application/vnd.rn-realsystem-rmj;realplay %s
+application/vnd.rn-realsystem-rmx;realplay %s
+application/streamingmedia;realplay %s
+application/sdp;realplay %s
+application/x-sdp;realplay %s
+application/x-bzip2;file-roller %s ;echo -e "\n"
+application/x-gzip;file-roller %s
+
+application/x-ogg; alsaplayer -i gtk '%s'; test=test "$DISPLAY" != ""; nametemplate=%s.ogg
+application/ogg; alsaplayer -i gtk '%s'; test=test "$DISPLAY" != ""; nametemplate=%s.ogg
+application/x-flac; alsaplayer -i gtk '%s'; test=test "$DISPLAY" != ""; nametemplate=%s.flac
+video/mpeg; gxine '%s'; description="MPEG Video"; test=test -n "$DISPLAY"
+image/svg+xml; inkscape '%s'; description="Scalable Vector Graphics"; test=test -n "$DISPLAY"; print=inkscape --print='|lp' '%s'; edit=inkscape '%s'; compose=inkscape '%s'
+image/svg; inkscape '%s'; description="Scalable Vector Graphics"; test=test -n "$DISPLAY"; print=inkscape --print='|lp' '%s'; edit=inkscape '%s';  compose=inkscape '%s'
+image/svg+xml; false; description="Scalable Vector Graphics"; test=test -z "$DISPLAY"; print=inkscape --print='|lp' '%s'
+image/svg; false; description="Scalable Vector Graphics"; test=test -z "$DISPLAY"; print=inkscape --print='|lp' '%s'
+video/mpeg; vlc '%s'; description="MPEG Video"; test=test -n "$DISPLAY"
+video/x-mpeg; vlc '%s'; description="MPEG Video"; test=test -n "$DISPLAY"
+video/mpeg-system; vlc '%s'; description="MPEG Video"; test=test -n "$DISPLAY"
+video/x-mpeg-system; vlc '%s'; description="MPEG Video"; test=test -n "$DISPLAY"
+video/mpeg4; vlc '%s'; description="MPEG-4 Video"; test=test -n "$DISPLAY"
+application/mpeg4-iod; vlc '%s'; description="MPEG-4 Video"; test=test -n "$DISPLAY"
+application/mpeg4-muxcodetable; vlc '%s'; description="MPEG-4 Video"; test=test -n "$DISPLAY"
+video/mpeg; xine '%s'; description="MPEG Video"; test=test -n "$DISPLAY"
+image/vnd.djvu; /usr/bin/djview4 '%s'; test=test -n "$DISPLAY"; description=DjVu file; nametemplate=%s.djvu
+image/x.djvu; /usr/bin/djview4 '%s'; test=test -n "$DISPLAY"; description=DjVu file; nametemplate=%s.djvu
+image/x-djvu; /usr/bin/djview4 '%s'; test=test -n "$DISPLAY"; description=DjVu file; nametemplate=%s.djvu
+application/x-dia-diagram; dia '%s'; description="DIA diagram"; test=test -n "$DISPLAY"; nametemplate=%s.dia
+application/x-dia-diagram; dia '%s'; description="DIA diagram"; test=test -n "$DISPLAY"; nametemplate=%s.dia
+image/vnd.djvu; /usr/bin/djview '%s'; test=test -n "$DISPLAY"; description=DjVu file; nametemplate=%s.djvu
+image/x.djvu; /usr/bin/djview '%s'; test=test -n "$DISPLAY"; description=DjVu file; nametemplate=%s.djvu
+image/x-djvu; /usr/bin/djview '%s'; test=test -n "$DISPLAY"; description=DjVu file; nametemplate=%s.djvu
+application/postscript; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.ps
+application/x-bzpostscript; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.ps.bz2
+application/x-gzpostscript; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.ps.gz
+image/x-eps; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.eps
+image/x-bzeps; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.eps.bz2
+image/x-gzeps; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.eps.gz
+application/x-dvi; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.dvi
+application/x-gzdvi; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.dvi.gz
+application/x-bzdvi; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.dvi.bz2
+image/vnd.djvu; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.djvu
+application/x-cbr; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.cbr
+application/x-cbz; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.cbz
+application/vnd.sun.xml.impress; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.sxd
+application/vnd.oasis.opendocument.presentation; evince '%s'; test=test -n "$DISPLAY"; nametemplate=%s.odp
+application/x-arj; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -e /usr/bin/arj
+application/x-bzip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-bzip-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -e /usr/bin/bzip2
+application/x-compress; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-gzip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-java-archive; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-lha; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -e /usr/bin/lha
+application/x-lzma; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -e /usr/bin/lzma
+application/x-lzma-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -e /usr/bin/lzma
+application/x-lzop; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -e /bin/lzop
+application/x-lzop-compressed-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -e /bin/lzop
+application/x-rar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -e /usr/bin/unrar -o -e /usr/bin/rar
+application/x-rar-compressed; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -e /usr/bin/unrar -o -e /usr/bin/rar
+application/x-stuffit; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-tar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/zip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -e /usr/bin/unzip
+application/x-zoo; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY" -a -e /usr/bin/zoo
+application/x-ace; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-ar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-cpio; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-deb; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-gtar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-lhz; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-zip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-zip-compressed; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+multipart/x-zip; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-rpm; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-jar; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-war; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-ear; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-cd-image; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-7z-compressed; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/x-gzpostscript; /usr/bin/file-roller '%s'; test=test -n "$DISPLAY"
+application/vnd.google-earth.kml+xml; /usr/bin/googleearth '%s'; description=Keyhole Markup Language data; test=test "$DISPLAY" != ""; nametemplate=%s.kml
+application/vnd.google-earth.kmz; /usr/bin/googleearth '%s'; description=Keyhole Markup Language archive; test=test "$DISPLAY" != ""; nametemplate=%s.kmz
+application/keyhole; /usr/bin/googleearth '%s'; description=Keyhole Markup Language data; test=test "$DISPLAY" != ""
+application/earthviewer; /usr/bin/googleearth '%s'; description=Keyhole Markup Language data; test=test "$DISPLAY" != ""
+application/x-troff-man; /usr/bin/nroff -mandoc -Tutf8; copiousoutput; print=/usr/bin/nroff -mandoc -Tutf8 | print text/plain:-
+application/postscript; /usr/bin/gv '%s'; test=test -n "$DISPLAY"; description=postscript
+application/ghostview; /usr/bin/gv '%s'; test=test -n "$DISPLAY"
+application/x-lyx; lyx '%s'; edit=lyx '%s'; nametemplate=%s.lyx; test=test "$DISPLAY" != ""; description="LyX Document"
+text/richtext; shownonascii iso-8859-1 -e richtext -p '%s'; description="Richtext"; copiousoutput; test=test "$(echo %{charset} | tr "[A-Z]" "[a-z]")" = iso-8859-1 -a "$DISPLAY" != ""
+text/enriched; shownonascii iso-8859-1 -e richtext -e -p '%s'; description="Enriched Text"; copiousoutput; test=test "$(echo %{charset} | tr "[A-Z]" "[a-z]")" = iso-8859-1 -a "$DISPLAY" != ""
+message/partial; showpartial '%s' %{id} %{number} %{total}; description="An incomplete message"
+message/external-body; showexternal '%s' %{access-type} %{name} %{site} %{directory} %{mode} %{server}; needsterminal; description="A reference to data stored in an external location"; composetyped="extcompose '%s"'
+application/x-ogg; mplayer '%s'; description="Ogg Stream"
+application/ogg; mplayer '%s'; description="Ogg Stream"
+video/mpeg; mplayer '%s'; description="MPEG Video"
+video/quicktime; mplayer '%s'; description="Apple QuickTime Video"
+video/x-mpeg; mplayer '%s'; description="MPEG Video"
+video/x-mpeg2; mplayer '%s'; description="MPEG-2 Video"
+video/x-msvideo; mplayer '%s'; description="MS Video (AVI)"
+video/x-ms-afs; mplayer '%s'; description="Microsoft ASF Video"
+video/x-ms-asf; mplayer '%s'; description="Microsoft ASF Video"
+video/x-ms-wma; mplayer '%s'; description="Windows Media Audio"
+video/x-ms-wmv; mplayer '%s'; description="Windows Media Video"
+video/x-ms-wmx; mplayer '%s'; description="Windows Media Video"
+video/x-ms-wvx; mplayer '%s'; description="Windows Media Video"
+application/vnd.mozilla.webapp; /usr/bin/prism '%s'; description=Prism; test=test -n "$DISPLAY";  nametemplate=%s.webapp
+application/x-ogg; rhythmbox '%s'; description="Ogg Vorbis audio"; test=test -n "$DISPLAY"; nametemplate=%s.ogg
+application/ogg; rhythmbox '%s'; description="Ogg Media"; test=test -n "$DISPLAY"
+application/x-flac; rhythmbox '%s'; description="FLAC audio"; test=test -n "$DISPLAY"; nametemplate=%s.flac
+text/xml; /usr/bin/seamonkey '%s'; description=XML Text; test=test -n "$DISPLAY";  nametemplate=%s.xml
+application/x-java-jnlp-file; /usr/lib/jvm/java-6-sun-1.6.0.07/jre/javaws/javaws '%s'
+text/xml; /usr/bin/swiftfox '%s'; description=XML Text; test=test -n "$DISPLAY";  nametemplate=%s.xml
+application/x-tar; /bin/tar tvf -; print=/bin/tar tvf - | print text/plain:-; copiousoutput
+application/x-gtar; /bin/tar tvzf -; print=/bin/tar tvzf - | print text/plain:-; copiousoutput
+application/x-dvi; /usr/bin/xdvi '%s'; description=TeX DVI; test=test -n "$DISPLAY"; nametemplate=%s.dvi
+application/x-bittorrent; transmission '%s'; description="GTK-based BitTorrent client"; test=test -n "$DISPLAY"
+application/ogg; ogg123 '%s'; description="Ogg Vorbis multimedia format"
+application/x-msdos-program; /usr/bin/wine '%s'; description=Windows Executable
+application/x-msdownload; /usr/bin/wine '%s'; description=Windows Executable
+application/exe; /usr/bin/wine '%s'; description=Windows Executable
+application/x-exe; /usr/bin/wine '%s'; description=Windows Executable
+application/dos-exe; /usr/bin/wine '%s'; description=Windows Executable
+vms/exe; /usr/bin/wine '%s'; description=Windows Executable
+application/x-winexe; /usr/bin/wine '%s'; description=Windows Executable
+application/msdos-windows; /usr/bin/wine '%s'; description=Windows Executable
+application/x-msdos-program; /usr/bin/wine '%s'; description=Windows Executable
+application/x-msi; /usr/bin/wine '%s'; description=Windows Installer
+application/x-chm; /usr/bin/xchm '%s'; edit=xchm '%s'; test=test "$DISPLAY" != ""; nametemplate=%s.chm; description="Compiled HTML Help"
+video/x-msvideo; gxine '%s'; description="MS Video (AVI)"; test=test -n "$DISPLAY"
+video/quicktime; gxine '%s'; description="Apple Quicktime Video"; test=test -n "$DISPLAY"
+text/richtext; richtext '%s'; description="Richtext"; copiousoutput
+text/enriched; richtext -e '%s'; description="Enriched Text"; copiousoutput
+video/mpeg; vlc -I rc -V caca '%s'; needsterminal; description="MPEG Video"
+video/x-mpeg; vlc -I rc -V caca '%s'; needsterminal; description="MPEG Video"
+video/mpeg-system; vlc -I rc -V caca '%s'; needsterminal; description="MPEG Video"
+video/x-mpeg-system; vlc -I rc -V caca '%s'; needsterminal; description="MPEG Video"
+video/mpeg4; vlc -I rc -V caca '%s'; needsterminal; description="MPEG-4 Video"
+application/mpeg4-iod; vlc -I rc -V caca '%s'; needsterminal; description="MPEG-4 Video"
+application/mpeg4-muxcodetable; vlc -I rc -V caca '%s'; needsterminal; description="MPEG-4 Video"
+video/x-msvideo; vlc '%s'; description="MS Video (AVI)"; test=test -n "$DISPLAY"
+video/quicktime; vlc '%s'; description="Apple Quicktime Video"; test=test -n "$DISPLAY"
+application/ogg; vlc '%s'; nametemplate=%s.ogg; description="Ogg stream"; test=test -n "$DISPLAY"
+application/x-ogg; vlc '%s'; nametemplate=%s.ogg; description="Ogg stream"; test=test -n "$DISPLAY"
+application/x-ms-asf-plugin; vlc '%s'; description="Windows Media Video"; test=test -n "$DISPLAY"
+application/x-mplayer2; vlc '%s'; description="Windows Media"; test=test -n "$DISPLAY"
+video/mpeg; aaxine '%s'; needsterminal; description="MPEG Video"
+video/x-msvideo; xine '%s'; description="MS Video (AVI)"; test=test -n "$DISPLAY"
+video/x-ms-wmv; xine '%s'; description="MS Video (WMV)"; test=test -n "$DISPLAY"
+video/quicktime; xine '%s'; description="Apple Quicktime Video"; test=test -n "$DISPLAY"
+video/x-msvideo; vlc -I rc -V caca '%s'; needsterminal; description="MS Video (AVI)"
+video/quicktime; vlc -I rc -V caca '%s'; needsterminal; description="Apple Quicktime Video"
+application/ogg; vlc -I rc -V caca '%s'; nametemplate=%s.ogg; needsterminal; description="Ogg stream"
+application/x-ogg; vlc -I rc -V caca '%s'; nametemplate=%s.ogg; needsterminal; description="Ogg stream"
+application/x-ms-asf-plugin; vlc -I rc -V caca '%s'; needsterminal; description="Windows Media Video"
+application/x-mplayer2; vlc -I rc -V caca '%s'; needsterminal; description="Windows Media"
+video/x-msvideo; aaxine '%s'; needsterminal; description="MS Video (AVI)"
+video/x-ms-wmv; aaxine '%s'; needsterminal; description="MS Video (WMV)"
+video/quicktime; aaxine '%s'; needsterminal; description="Apple Quicktime Video"
+application/x-debian-package; /usr/lib/mime/debian-view '%s'; needsterminal; description=Debian GNU/Linux Package; nametemplate=%s.deb

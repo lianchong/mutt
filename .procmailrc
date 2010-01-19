@@ -1,0 +1,81 @@
+MAILDIR=$HOME/Mail                ##you better make sure it exists
+LOGFILE=$HOME/.procmaillog
+LOGABSTRACT=no
+#VERBOSE=on...is only used for debugging
+VERBOSE=off
+FORMAIL=/usr/bin/formail
+NL="
+"
+DISPLAY=:0.0
+##recipe lines begin with :0
+##dont put comments on recipe lines
+##disable a recipe with the false condition !
+##condition lines begin with * and regex is your friend
+##conditions are anded and everything after * is fed straight into egrep
+##one action line follows the conditions, in this case it is a mailbox name
+
+#catch duplicates using formail
+:0 Whc: .msgid.lock
+| $FORMAIL -D 16384 .msgid.cache
+
+:0 a
+$MAILDIR/duplicates
+
+#people we always allow mail from
+:0
+* ^From:.*(craig\@hotmail|renee\@local.com)
+$MAILDIR/friends
+
+#now flush some spam out
+:0
+* ^Subject:.*(credit|cash|money|debt|sex|sale|loan)
+$MAILDIR/spam
+
+:0 c
+| /home/lion/notify.py
+
+:0 c
+* ^To:.*(lion.lian\@oracle.com)
+| /home/lion/Downloads/fx/make_commands.sh
+
+:0 c
+* ^Cc:.*(lion.lian\@oracle.com)
+| /home/lion/Downloads/fx/make_commands.sh
+
+#no more html messages
+:0
+* ^Content-Type:.*html
+$MAILDIR/junk
+
+#now put my mail lists into mailboxes
+:0
+* ^List-Id:.*gentoo-user
+gentoo-user
+
+:0
+* ^List-Id:.*gentoo-dev
+gentoo-dev
+
+:0
+* ^List-Id:.*gentoo-announce
+gentoo-announce
+
+#catch any other gentoo mail
+:0
+* ^From:.*gentoo.org
+gentoo
+
+:0
+* ^From:.*@freshmeat\.net
+freshmeat
+
+################################
+# Last rule: mail that gets    #
+# this far goes in default box #
+################################
+:0
+* .*
+mbox
+
+# End of file
+

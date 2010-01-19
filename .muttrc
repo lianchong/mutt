@@ -1,0 +1,108 @@
+# Display
+push <show-version>			# Show version at startup
+set ascii_chars				# Fixes ugly arrows
+set sort=threads			# Sort by threadas
+set sort_aux=reverse-date-received		# Secondary sorting method
+set pager_index_lines=15		# 15 lines assigned to message list when viewing one
+set read_inc=100			# Read counter ticks every 100 msgs.
+set write_inc=100			# Write counter ticks every 100 msgs.
+set pager_stop				# Don't skip msgs on next page.
+auto_view *
+mime_lookup application/octet-stream	# See if it is really the correct MIME type, otherwise change it.
+mime_lookup text/plain		 	# See if it is really the correct MIME type, otherwise change it.
+alternative_order text/plain text/html
+# set date_format="!%a, %d %b, %Y at %H:%M:%S %Z"
+set date_format="%a, %b %d %H:%M"
+set index_format="%4C %Z %D %-22.22F (%?l?%4l&%4c?) %s"
+#set index_format="%4C %Z %{%b %d} %-15.15F (%?l?%4l&%4c?) %s"
+set folder_format="%2C %8s %d %t %N %f"
+#set folder="$HOME/Maildir"
+#set folder=imaps://redondos:niceone@localhost
+
+# Operations
+set move=no				# Don't move to mbox folder
+set noconfirmappend			# Just append, don't hassle me.
+set copy				# Save copies of outgoing messages
+set record=+Sent			# Save outgoing messages to folder
+set delete=yes			# Ask before deleting, preselecting 'yes'
+
+# Identity
+#set from="redondos@gmail.com"		# Alternative way of setting a sender's ID
+#set use_from=yes			# Enable above setting
+					# Sender ID
+# set spoolfile="/var/mail/redondos"
+set spoolfile="~/Mail/mbox"
+set folder="~/Mail"
+set mask="!^\\.[^.]"
+#-- Alternates setup --#
+set reverse_name=yes
+set reverse_realname=no
+alternates "lion.lian@oracle.com"
+set realname="LIAN_CHONG"
+set from="lion.lian@oracle.com"
+set use_from=yes
+#-- End alternates setup --#
+#my_hdr From: "LIAN_CHONG" <lion.lian@gmail.com>
+my_hdr X-Accept-Language: en,zh
+# my_hdr X-Operating-System: `uname -sr`
+my_hdr X-GPG-ID: 0xDB98F72
+my_hdr X-GPG-Fingerprint: A182 F6EC 302B 8491 A563  9B28 259F F209 CDB9 8F72
+# my_hdr X-Jabber-ID: redondos@gmail.com
+my_hdr X-Jabber-ID: lion.lian@oracle.com
+my_hdr X-AIM-ID: lionlian
+set hdrs=yes				# Enable above settings
+set use_envelope_from=yes		# 
+set envelope_from=yes			# To let mutt choose msmtp account.
+
+# Composing and sending
+set mime_forward			# Forward message as MIME attachments.
+set reply_self=yes
+					# Spell checking with http://www.vim.org/scripts/script.php?script_id=195
+set editor="vim \"+normal \\\\ec\" +/^$/"
+#set editor="ec" 
+set edit_headers			# Permit editting of message headers
+set sendmail_wait=-1			# Don't wait around for sendmail.
+set sendmail="/usr/bin/msmtp"		# Use msmtp
+set signature="~/.mutt/sourced/signature"
+# Recommended crap from msmtp man page that I don't need.
+# set use_from=yes
+# set realname="redondos--"
+# set from=redondos@gmail.com
+# set envelope_from=yes
+
+# Extra configuration
+source ~/.mutt/sourced/autoview			# Autoview
+#source ~/.mutt/sourced/gpg			# GnuPG 
+source `~/.mutt/scripts/themes.sh`		# Color 
+source ~/.mutt/sourced/headers			# Customize header display 
+source ~/.mutt/sourced/bindings			# Key bindings 
+#source ~/.mutt/sourced/mailboxes.maildir	# Mailboxes that receive mail
+#source ~/.mutt/sourced/lists			# Mailing lists (subscribed or not)
+# source ~/.mutt/sourced/fcc-hooks		# Hooks for outgoing mail | Replaced by folder-hooks
+#source ~/.mutt/sourced/send-hooks		# Automatically change From: headers and such
+#source ~/.mutt/sourced/save-hooks		# Auto-select save folders
+#source ~/.mutt/sourced/folder-hooks		# Auto-save
+#source ~/.mutt/sourced/aliases			# Well, aliases.
+source ~/.mutt/sourced/macros			# Macros.
+#source ~/.mutt/themes/calmar.light
+#source ~/.mutt/themes/ivy_league.theme
+#source ~/.mutt/themes/themes.256
+#set sendmail="/usr/bin/msmtp"
+set query_command="~/.mutt/ldap_query '%s'"
+#set query_command="bugz --columns 50 -b http://bugzilla.oracle.com/bugzilla/show_bug.cgi?id=6387 -u lion.lian@oracle.com -p tycho123 get %s -A"
+alias SAURABH.G.GARG \"SAURABH.G.GARG@ORACLE.COM\" <SAURABH.G.GARG@oracle.com>
+alias gaojun.liu \"gaojun.liu\" <gaojun.liu@oracle.com>
+alias hongxi.ma Hongxi Ma <hongxi.ma@oracle.com>
+alias junjing.hao junjing hao <junjing.hao@oracle.com>
+set mailcap_path="~/.mutt/mailcap"
+set print_command = "muttprint"
+alias Lion Chong Lian <lion.lian@oracle.com>
+alias Carol Carol Tian <carol.tian@oracle.com>
+alias Homa Hongxi Ma <hongxi.ma@oracle.com>
+alias org  CTian ORG<ctian_org_ww@oracle.com>
+alias XiaoDong xiaodong yang <xiao.dong.yang@oracle.com>
+alias hart Hart Huang <hart.huang@oracle.com>
+alias dan 丹丹 <kelleyludan@163.com>
+alias liang Shanshan Liang <stephanie.liang@oracle.com>
+alias gerry Gerry Buteau <gerry.buteau@oracle.com >
+alias kevin Kevin Tronkowski <kevin.tronkowski@oracle.com>
